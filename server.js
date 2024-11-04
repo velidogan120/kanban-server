@@ -13,6 +13,13 @@ const io = socketIo(server, {
   },
 });
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://kanban-velidogan120.vercel.app");
+    res.header("Access-Control-Allow-Methods", "GET, POST");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  });
+
 io.on("connection", (socket) => {
   console.log("New client connected");
 
